@@ -1,5 +1,6 @@
 package com.friendfinder;
 
+import java.util.ArrayList;
 import java.util.Vector;
 
 import android.content.Context;
@@ -31,23 +32,43 @@ public class ContactList
 		return conList;
 	}
 	
+	public ArrayList<Contact> getContactArray()
+	{
+		ArrayList<Contact> list = null;
+		return list;
+	}
+	
+	public String[] getContactNames()
+	{
+		String[] names = new String[conList.size()];
+		
+		for(int i = 0; i < conList.size();i++)
+		{
+			names[i] = conList.elementAt(i).getName();
+		}
+		return names;
+	}
+	
 	public void populateList(Context context)
 	{
-		String contactName = null;
-		String phoneNumber = null;
-		
-		Cursor cursor = context.getContentResolver().query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI, null,null,null, null);
-		
-		while (cursor.moveToNext()) 
+		if(conList.isEmpty())
 		{
-		    contactName  = cursor.getString(cursor.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME));
-		    phoneNumber = cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER));
-		    
-		    //Toast.makeText(context, "Contact Name" + contactName, Toast.LENGTH_LONG).show();
-		    
-		    Contact myContact = new Contact(contactName, phoneNumber);
-		    
-		    conList.addElement(myContact);
+			String contactName = null;
+			String phoneNumber = null;
+			
+			Cursor cursor = context.getContentResolver().query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI, null,null,null, null);
+			
+			while (cursor.moveToNext()) 
+			{
+			    contactName  = cursor.getString(cursor.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME));
+			    phoneNumber = cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER));
+			    
+			    //Toast.makeText(context, "Contact Name" + contactName, Toast.LENGTH_LONG).show();
+			    
+			    Contact myContact = new Contact(contactName, phoneNumber);
+			    
+			    conList.addElement(myContact);
+			}
 		}
 	}
 }
