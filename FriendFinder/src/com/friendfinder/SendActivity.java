@@ -6,8 +6,11 @@ import java.util.Vector;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.Intent;
 import android.view.Menu;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -30,14 +33,25 @@ public class SendActivity extends Activity
 		contactList.populateList(getApplicationContext());
 		Vector<Contact> list = contactList.getContactList();
 		
-		/*ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, contactList.getContactNames());
-		listview.setAdapter(adapter);*/
-		
 		List<Contact> arrayList = new ArrayList<Contact>(list);
 		contactAdapter = new ContactAdapter(SendActivity.this, R.layout.listitem, arrayList);
 		listview.setAdapter(contactAdapter);
 		
 		backButton = (Button) findViewById(R.id.button1);
+		
+		listview.setOnItemClickListener(new OnItemClickListener()
+		{
+			@Override
+			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3)
+			{
+				Toast.makeText(getApplicationContext(), "Position:  " + arg2, Toast.LENGTH_SHORT).show();
+				
+				Intent intent = new Intent(getApplicationContext(), ContactZoomActivity.class);
+				intent.putExtra("position", arg2);
+				startActivity(intent);
+			}
+			
+		});
 		
 		backButton.setOnClickListener(new View.OnClickListener() 
 		{

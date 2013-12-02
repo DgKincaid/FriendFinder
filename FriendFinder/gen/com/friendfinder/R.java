@@ -214,8 +214,8 @@ containing a value of this type.
         public static final int contactName=0x7f05000b;
         public static final int contactNumber=0x7f05000c;
         public static final int hybrid=0x7f050004;
-        public static final int listView1=0x7f05000a;
-        public static final int map=0x7f050009;
+        public static final int listView1=0x7f050009;
+        public static final int map=0x7f05000a;
         public static final int none=0x7f050000;
         public static final int normal=0x7f050001;
         public static final int satellite=0x7f050002;
@@ -267,6 +267,7 @@ containing a value of this type.
         [CHAR LIMIT=70] 
          */
         public static final int auth_client_using_bad_version_title=0x7f060014;
+        public static final int cancel=0x7f060023;
         /**  Button in confirmation dialog to enable Google Play services.  Clicking it
         will direct user to application settings of Google Play services where they
         can enable it [CHAR LIMIT=40] 
@@ -338,6 +339,10 @@ containing a value of this type.
         /**  Long form sign-in button text [CHAR LIMIT=30] 
          */
         public static final int common_signin_button_text_long=0x7f060013;
+        public static final int dialog_find=0x7f060022;
+        /** for the find activity
+         */
+        public static final int find=0x7f060021;
         public static final int hello_world=0x7f06001c;
         public static final int title_activity_contact_zoom=0x7f06001f;
         public static final int title_activity_find=0x7f060020;

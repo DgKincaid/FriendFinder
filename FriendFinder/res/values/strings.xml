@@ -8,5 +8,10 @@
     <string name="title_activity_send">SendActivity</string>
     <string name="title_activity_contact_zoom">ContactZoomActivity</string>
     <string name="title_activity_find">FindActivity</string>
+    
+   <!--for the find activity-->
+    <string name="find">Find</string>
+    <string name="dialog_find">Find </string>
+    <string name="cancel">Cancel</string>
 
 </resources>

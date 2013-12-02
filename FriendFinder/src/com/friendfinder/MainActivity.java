@@ -3,6 +3,11 @@ package com.friendfinder;
 import java.util.ArrayList;
 import java.util.Vector;
 
+import GPSTracker.GPSCoordinates;
+import GPSTracker.MyLocationListener;
+import SMSMessage.TextMessage;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
@@ -28,6 +33,12 @@ public class MainActivity extends Activity
 		
 		list.populateList(getApplicationContext());
 		final Vector<Contact> temp = list.getContactList();
+		final TextMessage mes = new TextMessage();
+		
+		LocationManager locManager = (LocationManager)getSystemService(getApplicationContext().LOCATION_SERVICE);
+
+		LocationListener mlocListener = new MyLocationListener(locManager);
+		locManager.requestLocationUpdates( LocationManager.GPS_PROVIDER, 0, 0, mlocListener);
 		
 		sendButton.setOnClickListener(new View.OnClickListener() 
 		{	
@@ -46,8 +57,8 @@ public class MainActivity extends Activity
 			@Override
 			public void onClick(View v) 
 			{	
-				/*Intent intent = new Intent(getApplicationContext(), FindActivity.class);
-				startActivity(intent);*/
+				Intent intent = new Intent(getApplicationContext(), FindActivity.class);
+				startActivity(intent);
 				
 				//Toast.makeText(getApplicationContext(), "Contact" + temp.elementAt(1).getName(), Toast.LENGTH_SHORT).show();
 			}
